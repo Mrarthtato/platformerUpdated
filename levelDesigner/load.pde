@@ -35,7 +35,4 @@ void load(){
         levelwidth = int(widths/blocksize);
         leveltxt = arrayfy(lines);
         levelfile = txt_to_block(leveltxt);
-        // println(leveltxt[23][1]);
-        // println(levelfile[23][50]);
-        // store();
 }
