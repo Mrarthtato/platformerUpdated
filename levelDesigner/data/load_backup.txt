@@ -1,0 +1,47 @@
+// String[][] arrayfy(String[] raw){
+//         String[][] arrayfied = new String[raw.length][levelwidth];
+//
+//         for (i = 1; i < raw.length; i++) {
+//                 arrayfied[i-1] = split(raw[i], "|");
+//         }
+//         return arrayfied;
+// }
+String[][] arrayfy(String[] raw){
+    String[][] arrayfied = new String[raw.length][];
+    for (i=0;i< raw.length;i++){
+        arrayfied[i] = seperate(raw[i]);
+        println (arrayfied[i]);
+    }
+
+    return arrayfied;
+
+}
+String[] seperate(String line){
+    return split(line, "|");
+}
+block[][] txt_to_block(String[][] lvltxt){
+        block[][] lvldat = new block[lvltxt.length][lvltxt[1].length];
+        for (i = 0; i < lvltxt.length; i++) {
+                for(j = 0; j < lvltxt[i].length; j++) {
+                        if (lvltxt[i][j] == null) {
+                                lvldat[i][j] = block_list[0];
+                        } else {
+
+                                lvldat[i][j] = block_list[int(lvltxt[i][j])];
+                        }
+                }
+        }
+        return lvldat;
+}
+
+void load(){
+        lines = loadStrings("level2.txt");
+        levelheight = int(heights/blocksize);
+        levelwidth = int(widths/blocksize);
+        leveltxt = arrayfy(lines);
+        savefile = new String[levelheight];
+        levelfile = txt_to_block(leveltxt);
+        // println(leveltxt[23][1]);
+        // println(levelfile[23][50]);
+        // store();
+}
