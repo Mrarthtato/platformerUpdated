@@ -1,18 +1,13 @@
 void menu() {
   noStroke();
   fill(160);
-  //menubase
-  // rect(width/2, height-height/8, width, height/4);
-  // rectMode(con)
+
   rect(width/2, real_space_cord(22), width, blocksize*5);
 
   fill(255);
   //map position
   rect(width/2, height-(1*blocksize), width-(10*blocksize), height/50);
   cube((5*blocksize) + cam*(0.88), height-(1+blocksize));
-  // rect(, , blocksize, blocksize, 7);
-
-  //block_list menu
 
   for(block i: block_list){
       if (type == i){
