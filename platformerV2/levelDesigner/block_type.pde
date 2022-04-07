@@ -16,6 +16,7 @@ class Block {
         
     }
     
+    
     void menu_tip(int cordx, int cordy) {
         fill(rgb);
         cube(cordx * blocksize + blocksize / 2, cordy * blocksize + blocksize / 2);
