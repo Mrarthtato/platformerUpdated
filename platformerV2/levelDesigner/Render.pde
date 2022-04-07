@@ -14,7 +14,7 @@ void Render() {
         for (int y = 0; y < levelfile[x].length; y++) {
             //iffile is null get out bruh dont waste cycles.
             if (levelfile[x][y] == null) {
-              println("blank");
+                println("blank");
                 return;
             }
             

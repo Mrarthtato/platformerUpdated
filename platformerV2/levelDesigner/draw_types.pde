@@ -7,7 +7,7 @@ void drawSingle() {
     int cordy = cordy() / blocksize;
     
     //set the cord with a new block with cords set.
-    saveNewBlock(eraseOrOtherwise.id, cordx, cordy);
+    levelfile[cordx][cordy] = newBlock(eraseOrOtherwise.id, cordx, cordy);
     
 }
 int squareDirX, squareDirY;
@@ -45,7 +45,7 @@ void drawDouble() {
                 int cordx = cam + firstptx + (i * squareDirX);
                 int cordy = firstpty + (j * squareDirY);
                 
-                saveNewBlock(eraseOrOtherwise.id, cordx, cordy);
+                levelfile[cordx][cordy] = newBlock(eraseOrOtherwise.id, cordx, cordy);
                 
             }
         }
@@ -57,8 +57,7 @@ void drawDouble() {
                 int cordx = cam + firstptx + (i * squareDirX);
                 int cordy = firstpty + (j * squareDirY);
                 
-                saveNewBlock(eraseOrOtherwise.id, cordx, cordy);
-                
+                levelfile[cordx][cordy] = newBlock(eraseOrOtherwise.id, cordx, cordy);
             }
         }
     }
