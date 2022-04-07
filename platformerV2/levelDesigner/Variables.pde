@@ -23,6 +23,7 @@ float nearestSqaureAxis(float cordinate, float axis) {
         return 0;
     }
     
+    
     if (cord > axis - blocksize) {
         return axis - blocksize;
     }
