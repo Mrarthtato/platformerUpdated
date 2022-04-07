@@ -21,13 +21,13 @@ void setup() {
   // surface.setResizable(true);
   blocksize = (width/50);
   rectMode(CENTER);
+
   //load level
   load();
+  
   //init buttons
   initializeButtonList();
-    
 
-//println(blockList[0]);
   //load_interfascia();
 }
 
@@ -36,10 +36,7 @@ void draw() {
   background(255);
   textSize(32);
   fill(52);
-  //render the cam speed
-  text(str(camspeed), 47*blocksize, 5*blocksize);
-   //<>// //<>//
-  
+
   //render
   Render();
   
@@ -48,6 +45,7 @@ void draw() {
     menu.render();
   }
   
+  //render cursor
   RenderCursor();
   
   

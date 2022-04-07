@@ -107,7 +107,6 @@ void keyPressed() {
     }
     if (key == 'r') {
         store();
-        storeUpdatedTemp();
     }
     if (key == 'm') {
         menu_toggled = !menu_toggled;

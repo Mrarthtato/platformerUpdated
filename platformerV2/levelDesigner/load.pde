@@ -6,6 +6,7 @@ String[][] arrayfy(String[] raw) {
     
     String[][] arrayfied = new String[raw.length][levelheight];
     
+    //setting into array.
     for (int i = 0; i < raw.length; i++) {
         arrayfied[i] = split(raw[i], "|");
     }
@@ -16,26 +17,21 @@ String[][] arrayfy(String[] raw) {
 Block[][] txt_to_block(String[][] lvltxt) {
     
     Block[][] lvldat = new Block[lvltxt.length][lvltxt[0].length];
-
+    //go thru the list according the x/y
     for (int x = 0; x < lvltxt.length; x++) {
         for (int y = 0; y < lvltxt[0].length; y++) {
-            if (lvltxt[x][y] == null) {
-                lvldat[x][y] = blockList[0];
-                // println(lvldat[x][y].id);
-            } else {
-                    
-                lvldat[x][y] = newBlock( int(lvltxt[x][y]) , x, y);
-                // lvldat[x][y].cordx = cordx; //<>//
-                // println(lvldat[x][y].id);
-            }
-            //bind cords.
-            //println(x);
-            //lvldat[x][y].setCords(x,y);
             
-        //     println("[ x = " + str(lvldat[x][y].cordy) + "]   [x actual = " + str(y) + "]");
+            if (lvltxt[x][y] == null) {
+                //if text is empty, populate with an empty block
+                lvldat[x][y] = newBlock(0, x, y);
+            } else {
+                //if the text is not empty then makenew block
+                lvldat[x][y] = newBlock( int(lvltxt[x][y]) , x, y);
+            }
         }
     }
-    //println(lvldat[0][0].cordx);
+
+    //return finished level data.
     return lvldat;
 }
 
@@ -44,9 +40,14 @@ Block[][] txt_to_block(String[][] lvltxt) {
 
 
 void load() {
+
+    //set data first, TODO: load level height and width from file
     levelheight = int(heights / blocksize);
     levelwidth = int(widths / blocksize);
-    lines = loadStrings("data/level3Fixed.txt");
+    //load text
+    lines = loadStrings("data/level3.txt");
+    //send text into array
     leveltxt = arrayfy(lines);
+    //send array into level file.
     levelfile = txt_to_block(leveltxt);
 }

@@ -9,9 +9,9 @@ class Menu {
         };
         return false;
     };
-
-    // PVector boundingBoxTopCorner = new PVector(0, 645);
+    
     PVector boundingBoxTopCorner = new PVector(0, 656 + 16);
+
     Menu() {
         
     }
@@ -19,15 +19,19 @@ class Menu {
     void render() {
         //this is the load order of the menu items
         renderMenuBackground();
+        //render the cam speed
+        renderCamSpeed();
         renderMap();
         renderButtons();
-
         //for debug tooltop enable this
         // debugToolTip();
-
         if (hover){
             toolTip();
         }
+    }
+
+    void renderCamSpeed(){
+        text(str(camspeed), 47*blocksize, 5*blocksize);
     }
     
     void renderMenuBackground() {
@@ -121,52 +125,6 @@ class Menu {
     }
 }
 
-// void menu() {
-//     noStroke();
-//     fill(160);
-    
-//     rect(width / 2, real_space_cord(22), width, blocksize * 5);
-    
-//     fill(255);
-//     //map position
-//     rect(width / 2, height - (1 * blocksize), width - (10 * blocksize), height / 50);
-//     cube((5 * blocksize) + cam * (0.88), height - (1 + blocksize));
-    
-//     //selecting draw mode
-//     if (drawType == 2) {
-//         stroke(0);
-//     }
-    
-//     fill(0);
-//     cube(20 * blocksize,22 * blocksize);
-//     noStroke();
-    
-//     // normalmode
-//     if (drawType == 1) {
-//         stroke(0);
-//     }
-    
-//     fill(0);
-//     cube(21 * blocksize, 22 * blocksize);
-//     noStroke();
-    
-//     for (Button button : blockButtons) {
-        
-//         if (type.id == button.menuItem.id) {
-//             stroke(0);
-//         };
-//         if (button.checkMouseCollision()) {
-//             toolTip = button.menuItem.desc;
-            
-//         };
-//         button.render();
-//     }
-    
-    
-//     fill(255);
-//     stroke(0);
-// }
-
 // this is called when the mouseis pressed, this processes the input.
 void menuOptions() {
     
@@ -249,12 +207,5 @@ class Button {
         fill(menuItem.rgb);
         cube(this.cord.x,this.cord.y);
         noStroke();
-        
-        
-        
-        // if (checkMouseCollision()) {
-        //     text_input(menuItem.desc);
-        
-// }
-    }    
+    }
 }
