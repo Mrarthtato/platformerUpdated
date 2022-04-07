@@ -1,3 +1,6 @@
+//todo make menu not specific to blocks, maybe make an extends
+//todo add labels to show what each row of buttons do, eg entity or blocks/modes
+
 class Menu {
 
     String toolTip = "";
