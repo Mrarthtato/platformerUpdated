@@ -9,24 +9,6 @@ void Render() {
     //render
     
     //numerate through the levelfile
-    // for (int i = 0; i < levelfile.length; i++) {
-    //     for (int j = cam; j < cam + levelwidth; j++) {
-    //         //iffile is null get out bruh dont waste cycles.
-    //         if (levelfile[i][j] == null) {
-    //             return;
-    //         }
-    
-    //         //iffile is not null and isnt a blank Block, then render
-    //         if (levelfile[i][j] != blockList[0]) {
-    //             stroke(0);
-    //             println(i);
-    //             println(levelfile[i][j].cordy);
-    //             fill(levelfile[i][j].rgb);
-    //             make_block(i, j);
-    //             // levelfile[i][j].render();
-    //         }
-    //     }
-// }
     
     for (int x = cam; x < cam + levelwidth; x++) {
         for (int y = 0; y < levelfile[x].length; y++) {
