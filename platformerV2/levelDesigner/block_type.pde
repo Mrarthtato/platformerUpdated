@@ -1,6 +1,3 @@
-
-
-
 class Block {
     String name;
     String desc;
