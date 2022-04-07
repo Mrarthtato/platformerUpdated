@@ -14,4 +14,5 @@ void renderconsole(){
         textSize(32);
         text(consoleMessage, 10, 30);
     }
+    
 }

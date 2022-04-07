@@ -1,0 +1,54 @@
+//import interfascia.*;
+
+//Tutorial
+
+
+
+//********
+//use mouse to edit terrain, left mouse button to delete,
+//hold shift for large area selection
+//use the r key to store the file into the level.txt file.
+//use arrow keys to navigate left and right
+//up and down arrow keys change scroll speed
+//the level file is then to be put into the data folder of the platformer file to load.
+//*********
+
+
+
+void setup() {
+  size(1600, 800);
+  // frame.setResizable(true);
+  // surface.setResizable(true);
+  blocksize = (width/50);
+  rectMode(CENTER);
+  //load level
+  load();
+  //init buttons
+  initializeButtonList();
+    
+
+//println(blockList[0]);
+  //load_interfascia();
+}
+
+void draw() {
+
+  background(255);
+  textSize(32);
+  fill(52);
+  //render the cam speed
+  text(str(camspeed), 47*blocksize, 5*blocksize);
+   //<>// //<>//
+  
+  //render
+  Render();
+  
+  //render menu
+  if (menu_toggled == true) {
+    menu.render();
+  }
+  
+  RenderCursor();
+  
+  
+}

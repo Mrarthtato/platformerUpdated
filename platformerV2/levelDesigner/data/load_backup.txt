@@ -19,15 +19,15 @@ String[][] arrayfy(String[] raw){
 String[] seperate(String line){
     return split(line, "|");
 }
-block[][] txt_to_block(String[][] lvltxt){
-        block[][] lvldat = new block[lvltxt.length][lvltxt[1].length];
+Block[][] txt_to_block(String[][] lvltxt){
+        Block[][] lvldat = new Block[lvltxt.length][lvltxt[1].length];
         for (i = 0; i < lvltxt.length; i++) {
                 for(j = 0; j < lvltxt[i].length; j++) {
                         if (lvltxt[i][j] == null) {
-                                lvldat[i][j] = block_list[0];
+                                lvldat[i][j] = blockList[0];
                         } else {
 
-                                lvldat[i][j] = block_list[int(lvltxt[i][j])];
+                                lvldat[i][j] = blockList[int(lvltxt[i][j])];
                         }
                 }
         }
