@@ -1,3 +1,5 @@
+//TODO make entity menu list
+
 entity[] entity_types = {
     new text("sign", 0, 0, "message inside this box"),
     // new mob("doggo", 0, 0)
@@ -26,7 +28,6 @@ class entity {
         fill(color(0,0,255));
         cube(posx, posy);
     }
-
 }
 class text extends entity implements behaviour{
     String message;

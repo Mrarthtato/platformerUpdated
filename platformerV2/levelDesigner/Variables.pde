@@ -15,8 +15,6 @@ PVector cord() {
 //calculates the nearest sqaure in an axis
 float nearestSqaureAxis(float cordinate, float axis) {
     
-    //float remainder = int(mouse % blocksize);
-    //float cord = int(mouse - remainder);
     float cord = float(cord(cordinate));
     
     if (cord < 0) {
