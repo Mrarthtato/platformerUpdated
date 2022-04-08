@@ -28,6 +28,7 @@ class entity {
         fill(color(0,0,255));
         cube(posx, posy);
     }
+    
 }
 class text extends entity implements behaviour{
     String message;

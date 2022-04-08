@@ -6,12 +6,15 @@ class Block {
 
     //cordx and cordy are the cords of the block in the array.
     int cordx, cordy;
+
+
     Block(String name, String desc, color rgb, int id) {
         this.name = name;
         this.desc = desc;
         this.rgb = rgb;
         this.id = id;
     }
+    
     Block() {
         
     }

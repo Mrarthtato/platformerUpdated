@@ -81,29 +81,29 @@ Block newBlock(int id) {
         case 1:
             return new Grass();
             //break;
-        case 2:
+            case 2:
             return new Huh();
             //break;
-        case 3:
+            case 3:
             return new Danger();
             //break;
-        case 4:
+            case 4:
             return new Dirt();
             //break;
-        case 5:
+            case 5:
             return new TextBox();
             //break;
-        case 6:
+            case 6:
             return new Neew();
             //break;
-        default:
-        return new Nothing();
-        //break;
-        
+            default:
+            return new Nothing();
+            //break;
+            
     }
     
 }
-void saveNewBlock(int id, int cordx, int cordy){
+void saveNewBlock(int id, int cordx, int cordy) {
     levelfile[cordx][cordy] = newBlock(id, cordx, cordy);
 }
 
@@ -113,25 +113,25 @@ Block newBlock(int id, int cordx, int cordy) {
         case 1:
             return new Grass(cordx, cordy);
             //break;
-        case 2:
+            case 2:
             return new Huh(cordx, cordy);
             //break;
-        case 3:
+            case 3:
             return new Danger(cordx, cordy);
             //break;
-        case 4:
+            case 4:
             return new Dirt(cordx, cordy);
             //break;
-        case 5:
+            case 5:
             return new TextBox(cordx, cordy);
             //break;
-        case 6:
+            case 6:
             return new Neew(cordx, cordy);
             //break;
-        default:
-        return new Nothing(cordx, cordy);
-        //break;
-        
+            default:
+            return new Nothing(cordx, cordy);
+            //break;
+            
     }
     
 }
