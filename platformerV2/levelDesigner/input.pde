@@ -88,27 +88,29 @@ void mouseWheel(MouseEvent event) {
 boolean shift = false;
 
 void keyPressed() {
-    if (keyCode == SHIFT) {
-        shift = true;
-    }
-    if (keyCode == LEFT) {
-        cam -= camspeed;
-    }
-    if (keyCode == RIGHT) {
-        cam += camspeed;
-    }
-    if (keyCode == UP) {
-        camspeed += 1;
-    }
-    if (keyCode == DOWN) {
-        if (camspeed > 1) {
-            camspeed -= 1;
-        }
-    }
-    if (key == 'r') {
+    switch(keyCode) {
+        case SHIFT:
+            shift = true;
+            break;
+        case LEFT:
+            cam -= camspeed;
+            break;
+        case RIGHT:
+            cam += camspeed;
+            break;
+        case UP:
+            camspeed += 1;
+            break;
+        case DOWN:
+            if (camspeed > 1) {
+                camspeed -= 1;
+            }
+            break;
+    };
+    if (key == 'r' || key == 'R') {
         store();
     }
-    if (key == 'm') {
+    if (key == 'm' || key == 'M') {
         menu_toggled = !menu_toggled;
     }
 }
