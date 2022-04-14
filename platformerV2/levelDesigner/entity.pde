@@ -14,9 +14,12 @@ entity[] entity_list = {
 interface behaviour{
     void render();
 }
+
 class entity {
     String name;
     float posx, posy;
+    PVector cord = new PVector();
+    
 
     entity(String name, float posx, float posy){
         this.name = name;

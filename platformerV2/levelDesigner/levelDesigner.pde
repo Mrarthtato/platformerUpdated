@@ -13,10 +13,13 @@
 //the level file is then to be put into the data folder of the platformer file to load.
 //*********
 
+void settings(){
 
+  fullScreen();
+}
 
 void setup() {
-  size(1600, 800);
+  // size(160, 90);
   // frame.setResizable(true);
   // surface.setResizable(true);
   blocksize = (width/50);
