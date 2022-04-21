@@ -10,11 +10,11 @@ void Render() {
     
     //numerate through the levelfile
     
-    for (int x = cam; x < cam + levelwidth; x++) {
+    for (int x = cam; x < cam + width; x++) {
         for (int y = 0; y < levelfile[x].length; y++) {
             //iffile is null get out bruh dont waste cycles.
             if (levelfile[x][y] == null) {
-                println("blank");
+                // println("blank");
                 return;
             }
             

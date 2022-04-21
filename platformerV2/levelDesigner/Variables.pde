@@ -37,7 +37,7 @@ PVector nearestSqaureToCords(PVector cords) {
     return new PVector(nearestSqaureAxis(cords.x, width), nearestSqaureAxis(mouseY, height));
     
 }
-
+//TODO depriciate
 int heights = 800;
 int widths = 1600;
 //levellength in blocks
@@ -137,3 +137,7 @@ Block newBlock(int id, int cordx, int cordy) {
 }
 
 Block type = blockList[1];
+
+// PVector gridSize() {
+    
+// }

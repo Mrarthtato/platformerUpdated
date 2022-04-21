@@ -42,8 +42,8 @@ Block[][] txt_to_block(String[][] lvltxt) {
 void load() {
 
     //set data first, TODO: load level height and width from file
-    levelheight = int(heights / blocksize);
-    levelwidth = int(widths / blocksize);
+    levelheight = int(height / blocksize);
+    levelwidth = int(width / blocksize);
     //load text
     lines = loadStrings("data/level3.txt");
     //send text into array
