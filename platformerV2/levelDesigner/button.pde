@@ -36,22 +36,42 @@ class Button {
         this.buttonSize = buttonSize;
     };
 
-    Boolean checkMouseCollision() {
+    // Boolean checkMouseCollision() {
+
+    //     // checkto see if mouse cords in inside the bounds of the Button
+    //     // assume the Block is in the middle.
+    //     if (this.cord.x == cord().x && this.cord.y == cord().y) {
+    //         return true;
+    //     };
+    //     // ifit doesnt show true then itsnot within.
+    //     return false;
+    // };
+
+     Boolean checkMouseCollision() {
 
         // checkto see if mouse cords in inside the bounds of the Button
         // assume the Block is in the middle.
-        if (this.cord.x == cord().x && this.cord.y == cord().y) {
-            return true;
-        };
+        float[] corner1 = new float[] {this.cord.x - blocksize/2, this.cord.y - blocksize/2};
+        float[] corner2 = new float[] {this.cord.x + blocksize/2, this.cord.y + blocksize/2};
+        
+        if (mouseY > corner1[1] && mouseY < corner2[1]){
+            if (mouseX > corner1[0] && mouseX < corner2[0]){
+                return true;
+            }
+        }
+
         // ifit doesnt show true then itsnot within.
         return false;
-
-        
     };
 
     void render() {
         fill(menuItem.rgb);
         cube(this.cord.x,this.cord.y);
         noStroke();
+
+        if (this.checkMouseCollision()){
+            fill(210,100);
+            cube(this.cord.x, this.cord.y);
+        }
     };
 }

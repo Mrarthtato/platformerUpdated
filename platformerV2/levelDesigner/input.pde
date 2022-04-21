@@ -5,6 +5,11 @@ int secondptx, secondpty;
 
 void RenderCursor() {
     fill(210,100);
+    if (menu_toggled) {
+        if (menu.isMouseOverMenu()) {
+            return;
+        }
+    }
     cube(nearestSqaureToMouse().x, nearestSqaureToMouse().y);
 }
 
