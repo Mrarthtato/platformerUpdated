@@ -1,4 +1,5 @@
 {
     "processing-language-server.processingPath": "/Applications/Processing Copy.app",
-    "processing-language-server.autoUpdate": true
+    "processing-language-server.autoUpdate": true,
+    "processing-formatter.interface.logChanges": true
 }

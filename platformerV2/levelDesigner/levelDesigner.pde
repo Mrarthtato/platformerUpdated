@@ -23,6 +23,10 @@ void setup() {
   // frame.setResizable(true);
   // surface.setResizable(true);
   blocksize = (width/50);
+
+  //initialize menu
+  menu = new Menu();
+  
   rectMode(CENTER);
 
   //load level

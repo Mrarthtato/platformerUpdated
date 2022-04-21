@@ -5,19 +5,45 @@ class Menu {
 
     String toolTip = "";
     boolean hover = false;
+    int backgroundHeight;
+    int[] corner1;
+    int[] corner2;
 
     boolean isMouseOverMenu(){
-        if (mouseY > boundingBoxTopCorner.y){
-            return true;
-        };
+        if (mouseY > corner1[1] && mouseY < corner2[1]){
+            if (mouseX > corner1[0] && mouseX < corner2[0]){
+                return true;
+            }
+        }
         return false;
     };
-
-    PVector boundingBoxTopCorner = new PVector(0, 656 + 16);
-
+    //default is automatically aligned to the bottom left, and is 3 high
     Menu() {
-
-    }
+        this.corner1 = new int[] {0, height - (blocksize * 3) - height%blocksize};
+        println(height);
+        this.corner2 = new int[] {width, height};
+    };
+    //piggybacking off processing keycode constants, determine menu area.
+    Menu(int alignment, int extension){
+        switch(alignment){
+            case LEFT:
+                this.corner1 = new int[] {0,0};
+                this.corner2 = new int[] {extension, height};
+            break;
+            case RIGHT :
+                this.corner1 = new int[] {width - extension, 0};
+                this.corner2 = new int[] {width, height};
+            break;	
+            case UP :
+                this.corner1 = new int[] {0, 0};
+                this.corner2 = new int[] {width, extension};
+            break;
+            case DOWN :
+                this.corner1 = new int[] {0, height - extension};
+                this.corner2 = new int[] {width, height};
+            break;
+        }
+    };
 
     void render() {
         //this is the load order of the menu items
@@ -42,16 +68,10 @@ class Menu {
         //todo (make mc style?)
         noStroke();
         fill(160);
-
-        //old background render
-        // rect(width / 2, real_space_cord(22), width, blocksize * 5);
-
         //new background based on the cords.
         rectMode(CORNERS);
-        rect(boundingBoxTopCorner.x, boundingBoxTopCorner.y, width, height);
+        rect(corner1[0], corner1[1], corner2[0], corner2[1]);
         rectMode(CENTER);
-
-
     }
 
     void renderButtons() {
@@ -61,17 +81,15 @@ class Menu {
                 stroke(0);
             };
 
-            //check to see if button is hovered
+            //check to see if button is hovered this is in menu instead of button because of the render order.
             if (button.checkMouseCollision()) {
                 hover = true;
                 this.toolTip = button.menuItem.desc;
-
             };
-
             //render the button
             button.render();
         }
-    }
+    };
     
     void renderMap() {
         // map position
@@ -86,7 +104,7 @@ class Menu {
         rectMode(CENTER);
         cube((1 * blocksize) + cam * (0.88), height - (1 + blocksize));
 
-    }
+    };
 
 
     void renderDrawMode() {
@@ -106,7 +124,7 @@ class Menu {
         fill(0);
         cube(21 * blocksize, 22 * blocksize);
         noStroke();
-    }
+    };
 
     void toolTip() {
         //render a text box
@@ -119,13 +137,13 @@ class Menu {
         fill(255);
         text(toolTip, mouseX, mouseY);
         hover = false;
-    }
+    };
 
     void debugToolTip(){
         //put statements here
         this.toolTip = "" + nearestSqaureToMouse();
         hover = true;
-    }
+    };
 }
 
 // this is called when the mouseis pressed, this processes the input.
@@ -133,82 +151,18 @@ void menuOptions() {
 
     //go through the block list
     for (Button i : blockButtons) {
-
-
         // println(i.checkMouseCollision());
         if (i.checkMouseCollision()) {
             type = i.menuItem;
             // println(i.menuItem.name);
         }
-    }
-    if (nearestSqaureToMouse().y / blocksize == 22 && nearestSqaureToMouse().x / blocksize == 47) {
-        drawType = 2;
-    }
-    if (nearestSqaureToMouse().y / blocksize == 22 && nearestSqaureToMouse().x / blocksize == 48) {
-        drawType = 1;
-    }
-}
-
-Button[] blockButtons;
-
-
-
-//here to initializebuttons
-void initializeButtonList() {
-
-    //format thearray
-    blockButtons = new Button[blockList.length];
-
-    //make the new entries
-    for (int i = 0;i < blockList.length;i++) {
-        PVector actualCords = gridToCord(blockListStartCord + i, 22);
-        blockButtons[i] = new Button(blockList[i], actualCords.x, actualCords.y);
-        // println(blockButtons[i].menuItem.name);
-    }
-
-}
-
-//formats grid ints to actual cords on the screen.
-PVector gridToCord(int x, int y) {
-    return new PVector(x * blocksize + blocksize / 2, y * blocksize + blocksize / 2);
+    };
+    // if (nearestSqaureToMouse().y / blocksize == 22 && nearestSqaureToMouse().x / blocksize == 47) {
+    //     drawType = 2;
+    // };
+    // if (nearestSqaureToMouse().y / blocksize == 22 && nearestSqaureToMouse().x / blocksize == 48) {
+    //     drawType = 1;
+    // };
 }
 
 
-class Button {
-
-    Block menuItem;
-    PVector cord = new PVector();
-    float buttonSize;
-
-    Button(Block menuItem, float cordx, float cordy) {
-        this.menuItem = menuItem;
-        this.cord.x = cordx;
-        this.cord.y = cordy;
-        this.buttonSize = (width / 50);
-    }
-
-    Button(Block menuItem, float cordx, float cordy, float buttonSize) {
-        this.menuItem = menuItem;
-        this.cord.x = cordx;
-        this.cord.y = cordy;
-        this.buttonSize = buttonSize;
-    }
-
-
-    Boolean checkMouseCollision() {
-
-        // checkto see if mouse cords in inside the bounds of the Button
-        // assume the Block is in the middle.
-        if (this.cord.x == cord().x && this.cord.y == cord().y) {
-            return true;
-        }
-        // ifit doesnt show true then itsnot within.
-        return false;
-    }
-
-    void render() {
-        fill(menuItem.rgb);
-        cube(this.cord.x,this.cord.y);
-        noStroke();
-    }
-}

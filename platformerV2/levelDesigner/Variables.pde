@@ -59,7 +59,7 @@ String[] lines;
 String[][] leveltxt;
 int blockListStartCord = 3;
 
-Menu menu = new Menu();
+Menu menu;
 
 //name, desc, r, g, b, id
 Block[] blockList =
@@ -138,6 +138,11 @@ Block newBlock(int id, int cordx, int cordy) {
 
 Block type = blockList[1];
 
+
+//formats grid ints to actual cords on the screen.
+PVector gridToCord(int x, int y) {
+    return new PVector(x * blocksize + blocksize / 2, y * blocksize + blocksize / 2);
+};
 // PVector gridSize() {
-    
+
 // }

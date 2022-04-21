@@ -26,11 +26,11 @@ Block[][] txt_to_block(String[][] lvltxt) {
                 lvldat[x][y] = newBlock(0, x, y);
             } else {
                 //if the text is not empty then makenew block
-                lvldat[x][y] = newBlock( int(lvltxt[x][y]) , x, y);
+                lvldat[x][y] = newBlock(int(lvltxt[x][y]) , x, y);
             }
         }
     }
-
+    
     //return finished level data.
     return lvldat;
 }
@@ -40,7 +40,7 @@ Block[][] txt_to_block(String[][] lvltxt) {
 
 
 void load() {
-
+    
     //set data first, TODO: load level height and width from file
     levelheight = int(height / blocksize);
     levelwidth = int(width / blocksize);
