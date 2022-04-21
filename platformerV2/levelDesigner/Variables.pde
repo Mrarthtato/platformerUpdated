@@ -17,9 +17,9 @@ float nearestSqaureAxis(float cordinate, float axis) {
     
     float cord = float(cord(cordinate));
     
-    if (cord < 0) {
-        return 0;
-    }
+    // if (cord < 0) {
+    //     return 0;
+    // }
     
     
     if (cord > axis - blocksize) {

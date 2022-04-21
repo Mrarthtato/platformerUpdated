@@ -10,7 +10,8 @@ void RenderCursor() {
             return;
         }
     }
-    cube(nearestSqaureToMouse().x, nearestSqaureToMouse().y);
+    // cube(nearestSqaureToMouse().x, nearestSqaureToMouse().y);
+    cube(cordx(), cordy());
 }
 
 
@@ -23,8 +24,6 @@ void mouseDragged() {
     };
     
     draggingdraw();
-    
-    
 }
 
 void draggingdraw() {
