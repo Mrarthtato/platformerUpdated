@@ -1,5 +1,7 @@
 int cord(float mouse) {
-    return int(mouse - (mouse % blocksize) + blocksize / 2);
+    // Divide mouse by blocksize and multiply by blocksize to get the nearest multiple of blocksize
+    int nearestMultiple = (int)(mouse / blocksize) * blocksize;
+    return nearestMultiple + blocksize / 2;
 }
 int cordx() {
     return cord(pmouseX);
@@ -14,18 +16,11 @@ PVector cord() {
 
 //calculates the nearest sqaure in an axis
 float nearestSqaureAxis(float cordinate, float axis) {
-    
-    float cord = float(cord(cordinate));
-    
-    // if (cord < 0) {
-    //     return 0;
-    // }
-    
-    
-    if (cord > axis - blocksize) {
-        return axis - blocksize;
-    }
-    return cord;
+     // Call cord() once and store the result in a variable
+    float cord = cord(cordinate);
+    //if (cord > axis - blocksize) return axis - blocksize; else return cord
+
+    return (cord > axis - blocksize) ? axis - blocksize : cord;
 }
 
 //returns a PVector of nearest sqaure to mouse.

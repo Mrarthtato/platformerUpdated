@@ -155,6 +155,7 @@ void menuOptions() {
         if (i.checkMouseCollision()) {
             type = i.menuItem;
             // println(i.menuItem.name);
+            break;
         }
     };
     // if (nearestSqaureToMouse().y / blocksize == 22 && nearestSqaureToMouse().x / blocksize == 47) {
