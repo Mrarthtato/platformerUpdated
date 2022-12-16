@@ -36,38 +36,26 @@ class Button {
         this.buttonSize = buttonSize;
     };
     
-    // Boolean checkMouseCollision() {
-    
-    //     // checkto see if mouse cords in inside the bounds of the Button
-    //     // assume the Block is in the middle.
-    //     if (this.cord.x == cord().x && this.cord.y == cord().y) {
-    //         return true;
-    //     };
-    //     // ifit doesnt show true then itsnot within.
-    //     return false;
-// };
-    
     float[] corner1 = new float[2];
     float[] corner2 = new float[2];
+    
     
     Boolean checkMouseCollision() {
         
         // checkto see if mouse cords in inside the bounds of the Button
         // assume the Block is in the middle.
-        corner1[0] = this.cord.x - blocksize / 2;
-        corner1[1] = this.cord.y - blocksize / 2;
-        corner2[0] = this.cord.x + blocksize / 2;
-        corner2[1] = this.cord.y + blocksize / 2;
         
-        if (mouseY > corner1[1] && mouseY < corner2[1]) {
-            if (mouseX > corner1[0] && mouseX < corner2[0]) {
-                return true;
-            }
-        }
-        
-        // ifit doesnt show true then itsnot within.
-        return false;
-    };
+        //pre compute blocksize/2
+        int halfBlockSize = blocksize / 2;
+        //calculate the corners
+        corner1[0] = this.cord.x - halfBlockSize;
+        corner1[1] = this.cord.y - halfBlockSize;
+        corner2[0] = this.cord.x + halfBlockSize;
+        corner2[1] = this.cord.y + halfBlockSize;
+        //check to see if mouse is inside the bounds of the box, if not, return false.
+        return mouseX > corner1[0] && mouseX < corner2[0] && mouseY > corner1[1] && mouseY < corner2[1];
+    }
+    
     
     void render() {
         fill(menuItem.rgb);
