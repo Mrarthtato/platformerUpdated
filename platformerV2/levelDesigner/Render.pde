@@ -1,39 +1,34 @@
 
 
 void Render() {
-    
     //prevent overscroll and nulls
     if (cam < 0) {
         cam = 0;
     }
-    //render
     
     //numerate through the levelfile
-    
     for (int x = cam; x < cam + width; x++) {
+        // Skip rendering for this iteration if levelfile[x] is null
+        if (levelfile[x] == null) {
+            continue;
+        }
+        
         for (int y = 0; y < levelfile[x].length; y++) {
-            //iffile is null get out bruh dont waste cycles.
-            if (levelfile[x][y] == null) {
-                // println("blank");
-                return;
+            // Skip rendering for this iteration if levelfile[x][y] is null or a blank block
+            if (levelfile[x][y] == null || levelfile[x][y].id == blockList[0].id) {
+                continue;
             }
             
-            //iffile is not null and isnt a blank Block, then render
-            if (levelfile[x][y].id != blockList[0].id) {
-                stroke(0);
-                // fill(levelfile[x][y].rgb);
-                // make_block(x, y);
-                // println("[ x = " + str(levelfile[x][y].cordx) + "]   [x actual = " + str(x) + "]");
-                levelfile[x][y].render();
-            }
+            stroke(0);
+            levelfile[x][y].render();
         }
     }
-    
     
     renderEntites();
     //saved text
     renderconsole();
 }
+
 
 
 void renderEntites() {
@@ -59,7 +54,10 @@ void renderBlocks(int i, int j) {
 void make_block(float i, float j) {
     //real_space_cord returns where the block will be in the screen
     //then the cam * blocksize adjusts the block to be displayed at the appropiate cords.
-    rect(real_space_cord(i) - (cam * blocksize), real_space_cord(j), blocksize, blocksize);
+    float x = real_space_cord(i) - (cam * blocksize);
+    float y = real_space_cord(j);
+    
+    rect(x, y, blocksize, blocksize);
 }
 
 float real_space_cord(float x) {

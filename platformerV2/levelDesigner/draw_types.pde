@@ -10,8 +10,6 @@ void drawSingle() {
     if (cordx < 0 || cordx >= levelfile.length || cordy < 0 || cordy >= levelfile[0].length) {
         return;
     }
-    
-    
     //set the cord with a new block with cords set.
     levelfile[cordx][cordy] = newBlock(eraseOrOtherwise.id, cordx, cordy);
     
@@ -19,30 +17,33 @@ void drawSingle() {
 int squareDirX, squareDirY;
 
 void drawDouble() {
-    
-    //calc the first point
-    firstptx -= (cam - clickcam);
-    clickcam = cam;
-    
-    //determine the direction of the dragged sqaure, draggin and scrolling is put into account.
-    
-    //compare the points: where is the mouse going releative to the original first point? this determines the direction
-    squareDirX = (firstptx > cordx() / blocksize) ? - 1 : 1;
-    squareDirY = (firstpty < cordy() / blocksize) ? 1 : - 1;
-    //using absolutevalue, we can first calculate the size of the sqaure, to make a for statment,
-    //then at the end, multiply by the direction established above.
-    
-    int absFirstptx = fastAbs((firstptx - (cordx() / blocksize)));
-    int absFirstpty = fastAbs(firstpty - (cordy() / blocksize));
-    
+    // Store the current mouse position and camera position in local variables
+    int mouseX = cordx() / blocksize;
+    int mouseY = cordy() / blocksize;
+    int camX = cam;
+
+    // Calculate the direction of the dragged square
+    int squareDirX = (firstptx > mouseX) ? -1 : 1;
+    int squareDirY = (firstpty < mouseY) ? 1 : -1;
+
+    // Calculate the size of the square using absolute values
+    int absFirstptx = fastAbs(firstptx - mouseX);
+    int absFirstpty = fastAbs(firstpty - mouseY);
+
+    // Use a single loop to iterate over the square
     for (int j = 0; j <= absFirstpty; j++) {
         for (int i = 0; i <= absFirstptx; i++) {
-            int cordx = cam + firstptx + (i * squareDirX);
+            // Calculate the coordinates of the current block
+            int cordx = camX + firstptx + (i * squareDirX);
             int cordy = firstpty + (j * squareDirY);
-            
+
+            // Update the level file with the new block
             levelfile[cordx][cordy] = newBlock(eraseOrOtherwise.id, cordx, cordy);
         }
     }
+
+    // Update the click camera position
+    clickcam = camX;
 }
 
 int fastAbs(int x) {

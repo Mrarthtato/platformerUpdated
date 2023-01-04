@@ -35,9 +35,16 @@ class Button {
         this.cord.y = cordy;
         this.buttonSize = buttonSize;
     };
+    //pre compute blocksize/2
+    private int halfBlockSize;
+
+    void initialize(){
+        halfBlockSize = blocksize / 2;
+    }
     
     float[] corner1 = new float[2];
     float[] corner2 = new float[2];
+    
     
     
     Boolean checkMouseCollision() {
@@ -45,8 +52,7 @@ class Button {
         // checkto see if mouse cords in inside the bounds of the Button
         // assume the Block is in the middle.
         
-        //pre compute blocksize/2
-        int halfBlockSize = blocksize / 2;
+        
         //calculate the corners
         corner1[0] = this.cord.x - halfBlockSize;
         corner1[1] = this.cord.y - halfBlockSize;
