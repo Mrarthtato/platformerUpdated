@@ -1,31 +1,5 @@
 String[][] savelevelfile;
 String level_name = "data/" + "level3";
-//legacy storing of level file into text format
-void storeOld() {
-    String[] savefile = new String[levelfile.length];
-    
-    
-    //store level
-    for (int i = 0; i < levelfile.length; i++) {
-        savefile[i] = "";
-        for (int j = 0; j < levelfile[i].length; j++) {
-            
-            if (levelfile[i][j] != null) {
-                savefile[i] += str(levelfile[i][j].id);
-            } else {
-                savefile[i] += str(blockList[0].id);
-            }
-            savefile[i] += "|";
-        }
-    }
-    saveStrings(level_name + ".txt", savefile);
-    
-    //store data
-    String[] lvl_data = {(str(levelheight) + "|" + str(levellength))};
-    saveStrings(level_name + "_data.txt", lvl_data);
-    console("saved...", 3);
-    
-}
 
 void storeLvl(){
     //using the saveInts function in processing to store the level file
@@ -48,10 +22,8 @@ void storeLvl(){
 void storeConfig(){
     JSONObject levelData = new JSONObject();
     //TODO store block type data here::
-
     levelData.setInt("level_width", levelfile.length);
     levelData.setInt("level_height", levelfile[0].length);
-
     saveJSONObject(levelData, "levelConfig.json");
     println("config stored");
 }
@@ -62,11 +34,6 @@ void store(){
     ///storeConfig
     storeConfig();
 }
-
-
-
-
-
 String arrayToString(int[] array) {
     String stringAsArray = "";
     for (int i = 0; i < array.length; i++) {
