@@ -7,6 +7,7 @@ void load() {
     configData = loadJSONObject("levelConfig.json");
     levelheight = configData.getInt("level_height");
     levelwidth = configData.getInt("level_width");
+    blocksize = configData.getInt("block_size");
     
     //load level
     byte levelByteData[] = loadBytes("level3_data.dat");

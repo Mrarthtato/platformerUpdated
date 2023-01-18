@@ -27,6 +27,7 @@ class Button {
         this.cord.x = cordx;
         this.cord.y = cordy;
         this.buttonSize = (width / 50);
+        initialize();
     };
     
     Button(Block menuItem, float cordx, float cordy, float buttonSize) {
@@ -34,6 +35,7 @@ class Button {
         this.cord.x = cordx;
         this.cord.y = cordy;
         this.buttonSize = buttonSize;
+        initialize();
     };
     //pre compute blocksize/2
     private int halfBlockSize;
@@ -51,7 +53,7 @@ class Button {
         
         // checkto see if mouse cords in inside the bounds of the Button
         // assume the Block is in the middle.
-        
+        // println("mouseX: " + mouseX + " mouseY: " + mouseY);
         
         //calculate the corners
         corner1[0] = this.cord.x - halfBlockSize;

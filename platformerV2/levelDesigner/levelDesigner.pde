@@ -25,7 +25,7 @@ void setup() {
   menu = new Menu();
   
   rectMode(CENTER);
-
+  
   //load level
   load();
   

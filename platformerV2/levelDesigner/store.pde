@@ -22,6 +22,7 @@ void storeLvl(){
 void storeConfig(){
     JSONObject levelData = new JSONObject();
     //TODO store block type data here::
+    levelData.setInt("block_size", blocksize);
     levelData.setInt("level_width", levelfile.length);
     levelData.setInt("level_height", levelfile[0].length);
     saveJSONObject(levelData, "levelConfig.json");

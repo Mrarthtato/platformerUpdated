@@ -19,7 +19,7 @@ class Menu {
     };
     //default is automatically aligned to the bottom left, and is 3 high
     Menu() {
-        this.corner1 = new int[] {0, height - (blocksize * 3) - height%blocksize};
+        this.corner1 = new int[] {0, height - (blocksize * 5) - height%blocksize};
         println(height);
         this.corner2 = new int[] {width, height};
     };
@@ -83,6 +83,7 @@ class Menu {
 
             //check to see if button is hovered this is in menu instead of button because of the render order.
             if (button.checkMouseCollision()) {
+                println("hovering");
                 hover = true;
                 this.toolTip = button.menuItem.desc;
             };
@@ -154,7 +155,7 @@ void menuOptions() {
         // println(i.checkMouseCollision());
         if (i.checkMouseCollision()) {
             type = i.menuItem;
-            // println(i.menuItem.name);
+            println(i.menuItem.name);
             break;
         }
     };
