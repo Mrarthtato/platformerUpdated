@@ -62,8 +62,6 @@ void mousePressed() {
         } else {
             eraseOrOtherwise = type;
         }
-        
-        
     }
     
     switch(drawType) {

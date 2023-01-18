@@ -2,8 +2,6 @@
 
 //Tutorial
 
-
-
 //********
 //use mouse to edit terrain, left mouse button to delete,
 //hold shift for large area selection
@@ -14,7 +12,6 @@
 //*********
 
 void settings(){
-
   fullScreen();
 }
 
