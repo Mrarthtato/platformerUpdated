@@ -29,11 +29,27 @@ void storeConfig(){
     println("config stored");
 }
 
+void storeBlockList(){
+    JSONObject blockListJson = new JSONObject();
+    //store name description and id of each blocklist
+    for (int i = 0; i < blockList.length; i++) {
+        JSONObject block = new JSONObject();
+        block.setString("name", blockList[i].name);
+        block.setString("description", blockList[i].desc);
+        block.setInt("id", blockList[i].id);
+        blockListJson.setJSONObject("block" + str(i), block);
+    }
+    saveJSONObject(blockListJson, "blockList.json");
+    println("block list stored");
+}
+
 void store(){
     //store level
     storeLvl();
     ///storeConfig
     storeConfig();
+    //store block list
+    storeBlockList();
 }
 String arrayToString(int[] array) {
     String stringAsArray = "";

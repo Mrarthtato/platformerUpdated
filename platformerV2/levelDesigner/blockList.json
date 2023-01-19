@@ -1,0 +1,37 @@
+{
+  "block0": {
+    "name": "void",
+    "description": "nothing!",
+    "id": 0
+  },
+  "block1": {
+    "name": "grass",
+    "description": "grassy grass!",
+    "id": 1
+  },
+  "block2": {
+    "name": "??",
+    "description": "placeholder",
+    "id": 2
+  },
+  "block3": {
+    "name": "danger",
+    "description": "dont touch it mang",
+    "id": 3
+  },
+  "block4": {
+    "name": "dirt",
+    "description": "regular dirt",
+    "id": 4
+  },
+  "block5": {
+    "name": "text_box",
+    "description": "a box with text",
+    "id": 5
+  },
+  "block6": {
+    "name": "new",
+    "description": "",
+    "id": 6
+  }
+}

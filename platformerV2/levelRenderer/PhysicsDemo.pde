@@ -56,7 +56,7 @@ void mouseReleased() {
   balls_array[0].vel.y -= mouse_pressy - mouseY;
   balls_array[0].vel.x -= mouse_pressx - mouseX;
 }
-void keyPressed() {
+void keyPressedBall() {
   if (key == ' ') {
     if (havent_pressed) {
       balls_array[balls_number] = new ball(50, new PVector(mouseX, mouseY), new PVector(0, 0), int(random(0, 255)), int(random(0, 255)), int(random(0, 255)), 1);

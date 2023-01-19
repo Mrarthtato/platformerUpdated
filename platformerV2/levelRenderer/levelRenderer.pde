@@ -73,15 +73,7 @@ void init() {
     }
 }
 
-void loadBlocks() {
-    backdrop = loadImage("backdrop.jpg");
-    dirt = loadImage("dirtNew.png");
-    dirt2 = loadImage("dirt2.png");
-    dirt3 = loadImage("dirt3.png");
-    grass = loadImage("grass.png");
-    frame1 = loadImage("vig_lighter.png");
-    frame2 = loadImage("vig_darker.png");
-}
+
 
 
 
@@ -89,19 +81,6 @@ void loadBlocks() {
 void draw() {
     //background(backdrop);
     background(255);
-    
-    if (keyPressed) {
-        if (keyCode == LEFT) {
-            if (cam > 0) {
-                cam -= camspeed;
-                update_ball(camspeed);
-            }
-        }
-        if (keyCode == RIGHT) {
-            cam += camspeed;
-            update_ball(camspeed *-  1);
-        }
-    }
     textSize(32);
     Render();
     // ball_draw();
@@ -176,4 +155,33 @@ void Render() {
     }
     fill(0);
     rect(0,0,blocksize,blocksize);
+}
+IntDict blockIdVariations;
+PImage dirt, grass, grass2, frame1, dirt2, dirt3;
+PImage[] textures;
+
+//load initTextures before loadBlocks to load the textures and know the variation count
+void initTextures(){
+    blockIdVariations = new IntDict();
+    dirt = loadImage("dirt.png");
+    dirt2 = loadImage("dirt2.png");
+    dirt3 = loadImage("dirt3.png");
+    blockIdVariations.set("dirt", 3);
+    grass = loadImage("grass.png");
+    grass2 = loadImage("grass2.png");
+    blockIdVariations.set("grass", 2);
+    
+
+}
+void loadBlocks() {
+    backdrop = loadImage("backdrop.jpg");
+    dirt = loadImage("dirtNew.png");
+    dirt2 = loadImage("dirt2.png");
+    dirt3 = loadImage("dirt3.png");
+    grass = loadImage("grass.png");
+    frame1 = loadImage("vig_lighter.png");
+    frame2 = loadImage("vig_darker.png");
+}
+void loadVariation(int variations){
+
 }
