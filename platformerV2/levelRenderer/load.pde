@@ -41,9 +41,11 @@ int VariantCount = 3;
 
 
 int[][] loadLevelData(byte[] flatLvlData) {
+    //load level data from level_data.dat
     int flatArray[] = int(flatLvlData);
     int[][] levelfile = new int[levelwidth][levelheight];
     int counter = 0;
+    //load in the blocks
         for (int x = 0; x < levelfile.length; x++) {
         for (int y = 0; y < levelfile[0].length; y++) {
             levelfile[x][y] = flatArray[counter];
@@ -75,9 +77,11 @@ void loadBlockList() {
 }
 
 void loadBlockTextures() {
+    //load block textures
     for (int i = 0; i < blockList.length; i++) {
         Block block = blockList[i];
         int variations = 0;
+        //check for variations
         while(true) {
             String fileName;
             if (variations == 0) {
@@ -85,16 +89,22 @@ void loadBlockTextures() {
             } else {
                 fileName = block.name + variations + ".png";
             }
+            //check if file exists
             File file = dataFile(fileName);
             if (file.isFile()) {
+                //if file exists add to variations
                 variations++;
             } else {
                 break;
             }
         }
+        //set the number of variations
         block.variations = variations;
         println(block.name + " has " + variations + " variations");
+
+        //load the textures
         block.texture = new PImage[variations];
+        //load the textures
         for (int j = 0; j < variations; j++) {
             String fileName;
             if (j == 0) {
@@ -147,5 +157,4 @@ class Block {
         this.name = name;
         this.desc = desc;
     }
-    
 }

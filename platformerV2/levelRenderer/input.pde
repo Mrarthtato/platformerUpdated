@@ -19,5 +19,7 @@ void keyPressed() {
 }
 
 void mouseWheel(MouseEvent event) {
-    cam += event.getCount();
+    // cam += event.getCount();
+    zoomFactor += event.getCount() * 0.1;
+
 }
