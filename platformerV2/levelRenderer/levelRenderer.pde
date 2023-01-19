@@ -20,7 +20,7 @@ float camspeed = 0.5;
 boolean temp;
 String[] savefile;
 String[] lines;
-PImage backdrop, dirt, grass, temppic, frame1, frame2, dirt2, dirt3;
+PImage backdrop, temppic;
 
 void setup() {
     //size(1600, 800, P2D);
@@ -116,6 +116,7 @@ void Render() {
     // cam = 0;
     
     //numerate through the levelfile
+    //culled, only render within the screen
     for (int x = int(cam); x < int(cam) + width; x++) {
         // Skip rendering for this iteration if levelfile[x] is null
         if (levelfile[x] == null) {
@@ -124,30 +125,10 @@ void Render() {
         //todo add variations
         for (int y = 0; y < levelfile[x].length; y++) {
             // Skip rendering for this iteration if levelfile[x][y] is null or a blank block
-            if (levelfile[x][y] != 0) {
-                switch(levelfile[x][y]) {
-                    case 1:
-                        temppic = grass;
-                        break;
-                    case 2:
-                        temppic = grass;
-                        break;
-                    case 3:
-                        temppic = dirt;
-                        break;
-                    case 4:
-                        temppic = dirt;
-                        break;
-                    case 5:
-                        temppic = dirt2;
-                        break;
-                    case 6:
-                        temppic = dirt3;
-                        break;
-                    case 7:
-                        temppic = dirt;
-                        break;
-                }
+            if (levelfile[x][y] == 0 || (blockList[levelfile[x][y]].variations == 0)) {
+                continue;
+            } else{
+                temppic = blockList[levelfile[x][y]].texture[variations[x][y]];
                 image(temppic,(x * blocksize) - (cam * blocksize), y * blocksize + blocksize, blocksize, blocksize);
                 //rect((j*blocksize) - (cam*blocksize), i*blocksize, blocksize, blocksize);
             }
@@ -157,11 +138,11 @@ void Render() {
     rect(0,0,blocksize,blocksize);
 }
 IntDict blockIdVariations;
-PImage dirt, grass, grass2, frame1, dirt2, dirt3;
+PImage dirt, grass, grass2, frame1, frame2, dirt2, dirt3;
 PImage[] textures;
 
 //load initTextures before loadBlocks to load the textures and know the variation count
-void initTextures(){
+void initTextures() {
     blockIdVariations = new IntDict();
     dirt = loadImage("dirt.png");
     dirt2 = loadImage("dirt2.png");
@@ -170,8 +151,6 @@ void initTextures(){
     grass = loadImage("grass.png");
     grass2 = loadImage("grass2.png");
     blockIdVariations.set("grass", 2);
-    
-
 }
 void loadBlocks() {
     backdrop = loadImage("backdrop.jpg");
@@ -182,6 +161,6 @@ void loadBlocks() {
     frame1 = loadImage("vig_lighter.png");
     frame2 = loadImage("vig_darker.png");
 }
-void loadVariation(int variations){
-
+void loadVariation(int variations) {
+    
 }
