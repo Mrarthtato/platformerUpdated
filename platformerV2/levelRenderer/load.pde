@@ -17,9 +17,52 @@ void load() {
     byte levelByteData[] = loadBytes("level3_data.dat");
     levelfile = loadLevelData(levelByteData);
 
+    //load hitboxes
+    loadHitboxes();
+
     //create variations
     createVariations();
     
+}
+
+int[][] hitboxes;
+void loadHitboxes(){
+    hitboxes = new int[levelfile.length][levelfile[0].length];
+    //loop throught level file
+    for (int x = 0; x < levelfile.length; x++) {
+        for (int y = 0; y < levelfile[0].length; y++) {
+            //if block is not air
+            if(levelfile[x][y] != 0){
+                // hitboxes[x][y] = 1;
+                //create hitbox
+                //if block above is air
+                if (y > 0) {
+                    //if levelfile[x][y] is equal to either 0, 2, 5, 6 then create hitbox
+                    if(levelfile[x][y-1] == 0 || levelfile[x][y-1] == 2 || levelfile[x][y-1] == 3 || levelfile[x][y-1] == 5 || levelfile[x][y-1] == 6){
+                        hitboxes[x][y] |= 1;
+                    }
+                }
+                //if block left is air
+                if (x > 0) {
+                    //if levelfile[x][y] is equal to either 0, 2, 5, 6 then create hitbox
+                    if(levelfile[x-1][y] == 0 || levelfile[x-1][y] == 2 || levelfile[x][y-1] == 3 || levelfile[x-1][y] == 5 || levelfile[x-1][y] == 6){
+                        hitboxes[x][y] |= 2;
+                    }
+                }
+                //if block right is air
+                if (x < levelfile.length) {
+                    //if levelfile[x][y] is equal to either 0, 2, 5, 6 then create hitbox
+                    if(levelfile[x+1][y] == 0 || levelfile[x+1][y] == 2 || levelfile[x][y-1] == 3 || levelfile[x+1][y] == 5 || levelfile[x+1][y] == 6){
+                        hitboxes[x][y] |= 4;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
 }
 
 void loadConfig() {

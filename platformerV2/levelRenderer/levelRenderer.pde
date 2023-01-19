@@ -38,10 +38,10 @@ void draw() {
     //rect(cam+width/2, height/2, 15, 15);
 }
 
-void scrollingBackground(){
-    float xCord = width/2 + cam/3;
+void scrollingBackground() {
+    float xCord = width / 2 + cam / 3;
     float x = constrain(xCord, 0, width);
-    image(backdrop, x, height/2, width, height);
+    image(backdrop, x, height / 2, width, height);
 }
 
 void flickering() {
@@ -69,20 +69,20 @@ void render() {
 }
 float zoomFactor = 1.5;
 float camY = 0;
-void renderLevel(){
+void renderLevel() {
     //numerate through the levelfile
     //culled, only render within the screen
     //figure out where the camera is
-
     
-    cam += (float(pmouseX) - width/2)/1000;
-    camY -= (float(pmouseY) - height/2)/20;
+    
+    cam += (float(pmouseX) - width / 2) / 1000;
+    camY -= (float(pmouseY) - height / 2) / 20;
     camY = constrain(camY, 0, levelfile[1].length * blocksize * zoomFactor * 2);
-    println(levelfile[0].length/ (blocksize * zoomFactor * 2));
+    println(levelfile[0].length / (blocksize * zoomFactor * 2));
     float renderWindowX = constrain(cam, 0, width);
-    float renderWindowY = constrain(pmouseY - height/2, 0, height);
+    float renderWindowY = constrain(pmouseY - height / 2, 0, height);
     // println(renderWindowX);
-
+    
     for (int x = int(renderWindowX); x < int(renderWindowX) + width; x++) {
         // Skip rendering for this iteration if levelfile[x] is null
         if (levelfile[x] == null) {
@@ -91,20 +91,51 @@ void renderLevel(){
         //numerate through the levelfile[x]
         for (int y = 0; y < levelfile[x].length; y++) {
             // Skip rendering for this iteration if levelfile[x][y] is null or a blank block
+            float posX = (renderWindowX + x * blocksize * zoomFactor) - (renderWindowX * blocksize * zoomFactor);
+            float posY = camY + (y * blocksize * zoomFactor + blocksize * zoomFactor);
             if (levelfile[x][y] == 0 || (blockList[levelfile[x][y]].variations == 0)) {
                 continue;
             } else{
                 // Render the block
                 PImage temppic = blockList[levelfile[x][y]].texture[variations[x][y]];
                 float incrimentX = x - int(renderWindowX);
-                float posX = (renderWindowX + x * blocksize * zoomFactor) - (renderWindowX * blocksize * zoomFactor);
-                float posY =camY +(y * blocksize * zoomFactor + blocksize * zoomFactor);
+                
                 image(temppic, posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
             }
+            
+            
+            if (hitboxes[x][y] != 0) {
+                if ((hitboxes[x][y] & 1) == 1) {
+                    //up side is active
+                    stroke(255, 0, 0);
+                    noFill();
+                    rect(posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
+                }
+                if ((hitboxes[x][y] & 2) == 2) {
+                    // right side is active
+                    stroke(0, 255, 0);
+                    noFill();
+                    rect(posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
+                }
+                if ((hitboxes[x][y] & 4) == 4) {
+                    // left side is active
+                    stroke(0, 0, 255);
+                    noFill();
+                    rect(posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
+                }
+                if ((hitboxes[x][y] & 8) == 8) {
+                    
+                    // down side is active
+
+                }
+            }
+            
+            
         }
     }
-
 }
+
+
 
 PImage frame1, frame2;
 PImage[] textures;
