@@ -105,7 +105,7 @@ void renderLevel() {
             }
             
             
-            if (hitboxes[x][y] != 0) {
+            if (hitboxes[x][y] != 0 && keyPressed) {
                 if ((hitboxes[x][y] & 1) == 1) {
                     //up side is active
                     stroke(255, 0, 0);

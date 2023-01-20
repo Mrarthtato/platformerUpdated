@@ -39,8 +39,8 @@ class Button {
     };
     //pre compute blocksize/2
     private int halfBlockSize;
-
-    void initialize(){
+    
+    void initialize() {
         halfBlockSize = blocksize / 2;
     }
     
