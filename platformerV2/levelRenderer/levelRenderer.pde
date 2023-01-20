@@ -77,8 +77,9 @@ void renderLevel() {
     
     cam += (float(pmouseX) - width / 2) / 1000;
     camY -= (float(pmouseY) - height / 2) / 20;
-    camY = constrain(camY, 0, levelfile[1].length * blocksize * zoomFactor * 2);
-    println(levelfile[0].length / (blocksize * zoomFactor * 2));
+    // camY = constrain(camY, 0, levelfile[1].length * blocksize * zoomFactor * 2);
+    camY = constrain(camY, 0, 800/zoomFactor);
+    println(camY);
     float renderWindowX = constrain(cam, 0, width);
     float renderWindowY = constrain(pmouseY - height / 2, 0, height);
     // println(renderWindowX);
