@@ -33,7 +33,7 @@ void draw() {
     scrollingBackground();
     textSize(32);
     render();
-    // ball_draw();
+    ball_draw();
     flickering();
     //rect(cam+width/2, height/2, 15, 15);
 }

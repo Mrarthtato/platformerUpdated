@@ -13,9 +13,4 @@ class Player {
         this.health = health;
         this.level = level;
     }
-
-    
-
-
-
 }

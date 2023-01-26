@@ -168,7 +168,7 @@ void createVariations() {
     for (int x = 0; x < levelfile.length; x++) {
         for (int y = 0; y < levelfile[0].length; y++) {
             // Generate a random value using Perlin noise
-            double noise = noise(x * 0.1, y * 0.1);
+            double noise = noise(x * 0.3, y * 0.3);
             // Map the noise value to a variant ID
             variations[x][y] = (int)(noise * blockList[levelfile[x][y]].variations);
             // Set the variant ID in the levelfile array
