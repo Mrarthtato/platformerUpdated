@@ -21,6 +21,7 @@ void setup() {
     
     ball_setup();
 }
+
 void update_ball(float move) {
     for (int x = 0; x < balls_number; x++) {
         balls_array[x].pos.x += move * blocksize;
@@ -38,6 +39,7 @@ void draw() {
     //rect(cam+width/2, height/2, 15, 15);
 }
 
+//scrolling background
 void scrollingBackground() {
     float xCord = width / 2 + cam / 3;
     float x = constrain(xCord, 0, width);
@@ -45,10 +47,10 @@ void scrollingBackground() {
 }
 
 void flickering() {
+    //flickering
     int random;
     random = int(random(0, 20));
     if (random == 2) {
-        
         image(frame2, width / 2, height / 2, width, height);
     } else {
         image(frame1, width / 2, height / 2, width, height);
@@ -100,7 +102,6 @@ void renderLevel() {
                 // Render the block
                 PImage temppic = blockList[levelfile[x][y]].texture[variations[x][y]];
                 float incrimentX = x - int(renderWindowX);
-                
                 image(temppic, posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
             }
             

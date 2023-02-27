@@ -36,16 +36,23 @@ void storeConfig(){
     println("config stored");
 }
 
+//store the block list
 void storeBlockList(){
     JSONObject blockListJson = new JSONObject();
     //store name description and id of each blocklist
     for (int i = 0; i < blockList.length; i++) {
+        //create a new json object for each block
         JSONObject block = new JSONObject();
+        //store the name, description and id of the block
         block.setString("name", blockList[i].name);
+        //store the name, description and id of the block
         block.setString("description", blockList[i].desc);
+        //store the name, description and id of the block
         block.setInt("id", blockList[i].id);
+        //store the name, description and id of the block
         blockListJson.setJSONObject("block" + str(i), block);
     }
+    //store the block list
     saveJSONObject(blockListJson, "blockList.json");
     println("block list stored");
 }
@@ -59,7 +66,9 @@ void store(){
     storeBlockList();
 }
 String arrayToString(int[] array) {
+    //create a string to store the array
     String stringAsArray = "";
+    //loop through the array and add each value to the string
     for (int i = 0; i < array.length; i++) {
         stringAsArray += str(array[i]);
     }

@@ -46,6 +46,7 @@ class Block {
 
 }
 
+
 class Nothing extends Block {
     Nothing() {
         this.name = "void";
