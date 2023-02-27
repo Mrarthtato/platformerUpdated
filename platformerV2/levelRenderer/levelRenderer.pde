@@ -78,7 +78,7 @@ void renderLevel() {
     cam += (float(pmouseX) - width / 2) / 1000;
     camY -= (float(pmouseY) - height / 2) / 20;
     // camY = constrain(camY, 0, levelfile[1].length * blocksize * zoomFactor * 2);
-    camY = constrain(camY, 0, 800/zoomFactor);
+    camY = constrain(camY, 0, 800 / zoomFactor);
     println(camY);
     float renderWindowX = constrain(cam, 0, width);
     float renderWindowY = constrain(pmouseY - height / 2, 0, height);
@@ -104,7 +104,7 @@ void renderLevel() {
                 image(temppic, posX, posY, blocksize * zoomFactor, blocksize * zoomFactor);
             }
             
-            
+            // Render the hitboxes using bitwise operators
             if (hitboxes[x][y] != 0 && keyPressed) {
                 if ((hitboxes[x][y] & 1) == 1) {
                     //up side is active
@@ -127,11 +127,9 @@ void renderLevel() {
                 if ((hitboxes[x][y] & 8) == 8) {
                     
                     // down side is active
-
+                    
                 }
             }
-            
-            
         }
     }
 }
